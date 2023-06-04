@@ -1,9 +1,13 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RELATIONSHIP_ITEMS } from 'src/app/modules/core/constants/relationship-items.constant';
 import { IRelashionshipItem } from 'src/app/modules/core/interfaces/relationship-item.interface';
 import { PATTERN_NAME } from 'src/app/modules/core/utils/patterns.util';
 import { validateTotalPercentage } from 'src/app/modules/core/validators/total-percentage.validator';
+import { saveData } from 'src/app/store/actions/register-beneficiary.actions';
+import { IAppState } from 'src/app/store/states/app.states';
+import { Store } from '@ngrx/store';
 import { IBeneficiary } from '../../interfaces/beneficiary.interface';
 
 @Component({
@@ -15,7 +19,11 @@ export class FormBeneficiaryComponent {
   formBeneficiary: FormGroup;
   itemsRelationship: IRelashionshipItem[] = RELATIONSHIP_ITEMS;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private store: Store<IAppState>,
+    private router: Router
+  ) {
     this.formBeneficiary = this.formBuilder.group({
       beneficiaries: this.formBuilder.array(
         [],
@@ -33,7 +41,9 @@ export class FormBeneficiaryComponent {
   }
 
   get totalPercentageError(): boolean | null {
-    return this.formBeneficiary.get('beneficiaries')?.errors?.['totalPercentageInvalid'];
+    return this.formBeneficiary.get('beneficiaries')?.errors?.[
+      'totalPercentageInvalid'
+    ];
   }
 
   addBeneficiary(): void {
@@ -61,11 +71,15 @@ export class FormBeneficiaryComponent {
   }
 
   saveForm(): void {
-    if(this.beneficiaries.valid){
-      const beneficiaries: IBeneficiary[] = {
-        ...this.formBeneficiary.value
-      }
-      console.log(beneficiaries);
+    if (this.beneficiaries.valid) {
+      this.store.dispatch(
+        saveData({
+          beneficiaries: [
+            ...this.formBeneficiary.value.beneficiaries,
+          ] as IBeneficiary[],
+        })
+      );
+      this.router.navigate(['lista-beneficiarios']);
     }
   }
 }
