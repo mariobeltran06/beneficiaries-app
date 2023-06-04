@@ -6,6 +6,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './modules/shared/components/toolbar/toolbar.component';
+import { appReducers } from './store/reducers';
 
 const COMPONENTS_THEME = [ToolbarComponent];
 
@@ -15,7 +16,7 @@ const COMPONENTS_THEME = [ToolbarComponent];
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot(appReducers),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     ...COMPONENTS_THEME
   ],
