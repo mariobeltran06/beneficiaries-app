@@ -9,27 +9,4 @@ mat-card {
     font-size: 1.5rem;
     font-weight: 500;
   }
-
-  mat-card-content {
-    .btn-add {
-      margin: 10px 0;
-      font-size: 1rem;
-      font-weight: 600;
-      color: $light-blue-btn;
-    }
-    .text-help {
-      color: $text-gray;
-      margin: 10px 0;
-    }
-  }
-
-  mat-card-actions {
-    .btn-submit {
-      margin: 10px;
-      color: $primary;
-      font-size: 1rem;
-      font-weight: 600;
-      width: 100%;
-    }
-  }
 }

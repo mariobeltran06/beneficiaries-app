@@ -1,3 +1,125 @@
-<div formGroupName="formBeneficiary">
-
+<div class="container-form">
+  <form [formGroup]="formBeneficiary">
+    <div formArrayName="beneficiaries">
+      <div *ngFor="let beneficiary of beneficiaries.controls; let i = index">
+        <div [formGroupName]="i">
+          <mat-divider *ngIf="i != 0"></mat-divider>
+          <div class="first-section">
+            <div class="input">
+              <mat-form-field appearance="outline">
+                <mat-label>Nombre Completo</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  maxlength="50"
+                  minlength="2"
+                  formControlName="fullname"
+                  required />
+                <mat-error
+                  *ngIf="beneficiary.get('fullname')?.errors?.['required']"
+                  >El campo es requerido</mat-error
+                >
+                <mat-error
+                  *ngIf="beneficiary.get('fullname')?.errors?.['pattern']"
+                  >Ingrese solo letras, acompañado con nombres y
+                  apellidos</mat-error
+                >
+                <mat-error
+                  *ngIf="beneficiary.get('fullname')?.errors?.['minlength']"
+                  >Debe conetener 2 caracteres como mínimo</mat-error
+                >
+                <mat-error
+                  *ngIf="beneficiary.get('fullname')?.errors?.['maxlength']"
+                  >Debe conetener 50 caracteres como máximo</mat-error
+                >
+              </mat-form-field>
+            </div>
+            <div class="delete-button" *ngIf="beneficiary.valid">
+              <button
+                (click)="removeBeneficiary(i)"
+                mat-icon-button
+                color="warn">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </div>
+          <div class="second-section">
+            <div class="select">
+              <mat-form-field appearance="outline">
+                <mat-label>Parentesco</mat-label>
+                <mat-select formControlName="relationship">
+                  <mat-option
+                    *ngFor="let item of itemsRelationship"
+                    [value]="item.value">
+                    {{ item.name }}
+                  </mat-option>
+                </mat-select>
+                <mat-error
+                  *ngIf="beneficiary.get('relationship')?.errors?.['required']"
+                  >El campo es requerido</mat-error
+                >
+              </mat-form-field>
+            </div>
+            <div class="input">
+              <mat-form-field appearance="outline">
+                <mat-label>Porcentaje</mat-label>
+                <input
+                  matInput
+                  type="number"
+                  min="1"
+                  max="100"
+                  value="1"
+                  class="right-align"
+                  formControlName="percentage"
+                  step="1" />
+                <span matTextSuffix>%</span>
+                <mat-error
+                  *ngIf="beneficiary.get('percentage')?.errors?.['required']"
+                  >El campo es requerido</mat-error
+                >
+                <mat-error
+                  *ngIf="beneficiary.get('percentage')?.errors?.['min']"
+                  >El valor mínimo es 1%</mat-error
+                >
+                <mat-error
+                  *ngIf="beneficiary.get('percentage')?.errors?.['max']"
+                  >El valor máximo es 100%</mat-error
+                >
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="form-error"
+      *ngIf="totalPercentageError && arrayBeneficiariesLength > 0">
+      El total de porcentaje debe ser 100% entre todos los beneficiarios
+    </div>
+    <div class="buttons-group">
+      <div class="row" *ngIf="arrayBeneficiariesLength < 5">
+        <button
+          (click)="addBeneficiary()"
+          class="btn-add"
+          extended
+          mat-button
+          color="primary">
+          <mat-icon>add</mat-icon> Agregar otro beneficiario
+        </button>
+      </div>
+      <div class="row">
+        <p class="text-help">5 beneficiarios como máximo</p>
+      </div>
+      <div class="row">
+        <button
+          (click)="saveForm()"
+          class="btn-submit"
+          mat-flat-button
+          color="accent"
+          [disabled]="formBeneficiary.invalid || arrayBeneficiariesLength == 0">
+          Continuar
+        </button>
+      </div>
+    </div>
+  </form>
 </div>
