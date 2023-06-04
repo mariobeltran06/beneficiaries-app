@@ -1,0 +1,37 @@
+<table *ngIf="dataSource.length > 0" mat-table [dataSource]="dataSource">
+  <!-- Full Name Column -->
+  <ng-container matColumnDef="fullname">
+    <th mat-header-cell *matHeaderCellDef>Nombre Completo</th>
+    <td mat-cell *matCellDef="let element">{{ element.fullname }}</td>
+  </ng-container>
+
+  <!-- Relationship Column -->
+  <ng-container matColumnDef="relationship">
+    <th mat-header-cell *matHeaderCellDef>Parentesco</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.relationship }}
+    </td>
+  </ng-container>
+
+  <!-- Porcentage Column -->
+  <ng-container matColumnDef="porcentage">
+    <th mat-header-cell *matHeaderCellDef>Porcentaje</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.percentage / 100 | percent : '1.2' }}
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+<div
+  class="section-responsive"
+  *ngFor="let beneficiary of dataSource; let i = index">
+  <mat-divider *ngIf="i != 0"></mat-divider>
+  <h4 class="caption">Nombre Completo</h4>
+  <p class="text">{{ beneficiary.fullname }}</p>
+  <h4 class="caption">Parentesco</h4>
+  <p class="text">{{ beneficiary.relationship }}</p>
+  <h4 class="caption">Porcentaje</h4>
+  <p class="text">{{ beneficiary.percentage / 100 | percent : '1.2' }}</p>
+</div>

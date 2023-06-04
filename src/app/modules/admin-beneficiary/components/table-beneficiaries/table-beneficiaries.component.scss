@@ -1,0 +1,41 @@
+@use 'responsive' as *;
+
+table {
+  width: 100%;
+}
+
+.section-responsive {
+  display: none;
+
+  .caption {
+    padding: 10px 0;
+  }
+
+  .text {
+    word-wrap: break-word;
+  }
+
+  .text:last-child {
+    padding-bottom: 10px;
+  }
+}
+
+@include sm {
+  table {
+    display: none;
+  }
+
+  .section-responsive {
+    display: block;
+  }
+}
+
+@include lg {
+  table {
+    display: inline-table;
+  }
+
+  .section-responsive {
+    display: none;
+  }
+}
