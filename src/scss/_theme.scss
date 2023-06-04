@@ -1,0 +1,19 @@
+
+@use 'color-palette' as pal;
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$beneficiaries-app-primary: mat.define-palette(pal.$primary-palette);
+$beneficiaries-app-accent: mat.define-palette(pal.$accent-palette);
+$beneficiaries-app-warn: mat.define-palette(mat.$red-palette);
+
+$beneficiaries-app-theme: mat.define-light-theme((
+  color: (
+    primary: $beneficiaries-app-primary,
+    accent: $beneficiaries-app-accent,
+    warn: $beneficiaries-app-warn,
+  )
+));
+
+@include mat.all-component-themes($beneficiaries-app-theme);
