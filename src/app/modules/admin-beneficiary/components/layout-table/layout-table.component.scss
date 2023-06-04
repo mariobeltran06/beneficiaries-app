@@ -1,0 +1,29 @@
+@use 'colors' as *;
+
+mat-card {
+  padding: 10px;
+  box-shadow: none;
+
+  mat-card-title {
+    color: $primary;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  mat-card-content {
+    margin: 30px 0;
+  }
+
+  mat-card-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: nowrap;
+
+    .btn-replace {
+      color: $primary;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+  }
+}
