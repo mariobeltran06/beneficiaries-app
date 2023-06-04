@@ -1,5 +1,5 @@
 export interface IBeneficiary {
-    fullname: string;
-    relationship: string;
-    porcentage: string;
+  fullname: string;
+  relationship: string;
+  percentage: number;
 }

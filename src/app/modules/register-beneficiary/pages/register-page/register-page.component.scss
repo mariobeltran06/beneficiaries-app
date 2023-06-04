@@ -1,5 +1,31 @@
+@use 'responsive' as *;
+
 .container {
   padding-bottom: 50px;
   margin: 20px auto;
   width: 500px;
+}
+
+@include sm {
+  .container {
+    width: 300px;
+  }
+}
+
+@include ml {
+  .container {
+    width: 350px;
+  }
+}
+
+@include tb {
+  .container {
+    width: 500px;
+  }
+}
+
+@include lg {
+  .container {
+    width: 1000px;
+  }
 }

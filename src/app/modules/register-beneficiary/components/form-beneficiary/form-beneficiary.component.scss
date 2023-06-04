@@ -1,9 +1,10 @@
 @use 'colors' as *;
+@use 'responsive' as *;
 
 .container-form {
   margin-top: 10px;
 
-  mat-divider{
+  mat-divider {
     margin-bottom: 10px;
   }
 
@@ -30,12 +31,6 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: 10px 10px;
-
-    /*.select,
-    .input,
-    mat-form-field {
-      width: 100%;
-    }*/
 
     .input,
     .select {
@@ -89,6 +84,32 @@
         color: $primary;
         font-size: 1rem;
         font-weight: 600;
+        width: 100%;
+      }
+    }
+  }
+}
+
+@include sm {
+  .container-form {
+    .second-section {
+      .select,
+      .input,
+      mat-form-field {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@include tb {
+  .container-form {
+    .second-section {
+      flex-wrap: nowrap;
+
+      .select,
+      .input,
+      mat-form-field {
         width: 100%;
       }
     }

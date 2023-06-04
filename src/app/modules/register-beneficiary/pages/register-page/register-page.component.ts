@@ -5,6 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './register-page.component.html',
   styleUrls: ['./register-page.component.scss']
 })
-export class RegisterPageComponent {
-
-}
+export class RegisterPageComponent {}

@@ -50,8 +50,8 @@
                 <mat-select formControlName="relationship">
                   <mat-option
                     *ngFor="let item of itemsRelationship"
-                    [value]="item.value">
-                    {{ item.name }}
+                    [value]="item">
+                    {{ item }}
                   </mat-option>
                 </mat-select>
                 <mat-error

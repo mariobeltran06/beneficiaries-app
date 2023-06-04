@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RELATIONSHIP_ITEMS } from 'src/app/modules/core/constants/relationship-items.constant';
-import { IRelashionshipItem } from 'src/app/modules/core/interfaces/relationship-item.interface';
 import { PATTERN_NAME } from 'src/app/modules/core/utils/patterns.util';
 import { validateTotalPercentage } from 'src/app/modules/core/validators/total-percentage.validator';
 import { saveData } from 'src/app/store/actions/register-beneficiary.actions';
@@ -17,7 +16,7 @@ import { IBeneficiary } from '../../interfaces/beneficiary.interface';
 })
 export class FormBeneficiaryComponent {
   formBeneficiary: FormGroup;
-  itemsRelationship: IRelashionshipItem[] = RELATIONSHIP_ITEMS;
+  itemsRelationship: string[] = RELATIONSHIP_ITEMS;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -57,7 +56,7 @@ export class FormBeneficiaryComponent {
           Validators.maxLength(50),
         ],
       ],
-      relationship: [this.itemsRelationship[0].value, [Validators.required]],
+      relationship: [this.itemsRelationship[0], [Validators.required]],
       percentage: [
         1,
         [Validators.required, Validators.min(1), Validators.max(100)],
