@@ -1,0 +1,21 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Registrar Beneficiarios</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="container-form">
+      <form [formGroup]="layoutForm">
+        <div formArrayName="beneficiaries">
+          
+        </div>
+      </form>
+    </div>
+    <button class="btn-add" extended mat-button color="primary">
+      <mat-icon>add</mat-icon> Agregar otro beneficiario
+    </button>
+    <p class="text-help">5 beneficiarios como maximo</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button class="btn-submit" mat-flat-button color="accent">Continuar</button>
+  </mat-card-actions>
+</mat-card>
