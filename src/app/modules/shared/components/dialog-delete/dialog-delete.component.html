@@ -1,0 +1,22 @@
+<mat-dialog-content class="mat-typography">
+  <h2 class="title">{{ data.title }}</h2>
+  <mat-icon class="icon">{{ data.icon }}</mat-icon>
+  <p>
+    Se eliminarán los datos, por favor escribe
+    <strong>{{ data.variable }}</strong>
+  </p>
+  <form class="form" [formGroup]="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Palabra</mat-label>
+      <input matInput type="text" #word maxlength="20" formControlName="word" />
+    </mat-form-field>
+    <button
+      class="submit"
+      (click)="sendAction()"
+      mat-flat-button
+      color="warn"
+      [disabled]="word.value !== data.variable">
+      Reemplazar
+    </button>
+  </form>
+</mat-dialog-content>

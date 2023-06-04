@@ -1,0 +1,28 @@
+@use 'colors' as *;
+
+mat-dialog-content {
+  padding: 10px;
+
+  .title {
+    font-size: 1rem;
+    color: $primary;
+    font-weight: 600;
+  }
+
+  .icon {
+    display: block;
+    margin: 10px auto;
+    width: 64px;
+    height: 64px;
+    font-size: 4rem;
+    color: $icon-red;
+  }
+
+  .form {
+    margin: 20px 0;
+
+    mat-form-field, .submit {
+      width: 100%;
+    }
+  }
+}
