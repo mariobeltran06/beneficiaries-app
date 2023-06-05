@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## :globe_with_meridians: Hosting
 
-[Beneficiaries App - Click Here]()
+[Beneficiaries App - Click Here](https://beneficiaries-app-503a06.netlify.app)
 
 ## Development server
 
