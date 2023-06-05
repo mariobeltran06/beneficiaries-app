@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatTableModule } from '@angular/material/table';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { provideMockStore } from '@ngrx/store/testing';
 import { LayoutTableComponent } from '../../components/layout-table/layout-table.component';
@@ -13,8 +15,18 @@ describe('BeneficiariesPageComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [BeneficiariesPageComponent, LayoutTableComponent, TableBeneficiariesComponent],
-      imports: [MatDialogModule, NoopAnimationsModule, MatCardModule],
+      declarations: [
+        BeneficiariesPageComponent,
+        LayoutTableComponent,
+        TableBeneficiariesComponent,
+      ],
+      imports: [
+        MatDialogModule,
+        NoopAnimationsModule,
+        MatCardModule,
+        MatTableModule,
+        MatDividerModule
+      ],
       providers: [provideMockStore()],
     });
     fixture = TestBed.createComponent(BeneficiariesPageComponent);
@@ -31,7 +43,7 @@ describe('BeneficiariesPageComponent', () => {
     expect(element).toBeTruthy();
   });
 
-  it('should render app-layout-form', () => {
+  it('should render app-layout-table', () => {
     const element = fixture.nativeElement.querySelector('app-layout-table');
     expect(element).toBeTruthy();
   });
