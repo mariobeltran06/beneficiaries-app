@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NoAccessListGuard } from './modules/core/guards/no-access-list.guard';
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: 'registro-beneficiarios',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'registro-beneficiarios',
@@ -16,6 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'lista-beneficiarios',
+    canActivate: [NoAccessListGuard],
     loadChildren: () =>
       import('./modules/admin-beneficiary/admin-beneficiary.module').then(
         m => m.AdminBeneficiaryModule
@@ -30,5 +32,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
+  providers: [NoAccessListGuard],
 })
 export class AppRoutingModule {}
