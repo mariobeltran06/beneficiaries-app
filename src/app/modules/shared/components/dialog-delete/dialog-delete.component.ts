@@ -38,6 +38,6 @@ export class DialogDeleteComponent {
   }
 
   sendAction(): void {
-    if (this.form.valid) this.dialogRef.close(true);
+    this.dialogRef.close(true);
   }
 }

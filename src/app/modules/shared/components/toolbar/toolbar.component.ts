@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
@@ -17,6 +16,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     `,
   ],
   standalone: true,
-  imports: [MatToolbarModule, MatButtonModule],
+  imports: [MatToolbarModule],
 })
 export class ToolbarComponent {}
